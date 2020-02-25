@@ -5,8 +5,7 @@ class AddTask extends Component {
         return (
             <form>
                 <div>
-                    <input type="text" />
-                    <button>+</button>
+                    <input type="text" /> <button>+</button>
                 </div>
             </form>
         )
