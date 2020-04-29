@@ -1,0 +1,14 @@
+@import '../helpers/variables.scss';
+
+  .tasks__item {
+    background-color: $main-white;
+    border: 1px solid $main-light-grey;
+    border-radius: 6px;
+    list-style: none;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+  }
+
+  .task___complete {
+    background-color: $light-green;
+}

@@ -1,29 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Task from './Task';
+import { connect } from 'react-redux';
+
+import classes from './../scss/components/TasksList.module.scss';
 
 class TasksList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            todos: [
-                {   id: 1,   
-                    title: 'Task 1'
-                },
-                {   id: 2,
-                    title: 'Task 2'
-                },
-                {   id: 3,
-                    title: 'Task 3'
-                }
-            ]
-        }
-      }
-
     render() {
-       return this.state.todos.map(todo => (
-            <li key={todo.id} className="todo-list-item"><Task todo={todo} /></li>
+       return this.props.todos.map(todo => (
+            <li key={todo.id} 
+                className={ todo.complete ? `${classes.tasks__item} ${classes.task___complete}` : classes.tasks__item }>
+                <Task todo={todo} deleteTask={this.props.deleteTask} markDone={this.props.markDone} />
+            </li>
        ));
     }
 }
 
-export default TasksList
+export default TasksList;

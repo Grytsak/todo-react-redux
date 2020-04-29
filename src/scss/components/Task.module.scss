@@ -1,0 +1,33 @@
+@import '../helpers/variables.scss';
+
+.task__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.task__title {
+    color: $main-black;
+    font-size: 18px;
+    margin: 0;
+    text-align: left;
+}
+
+.task__checkbox {
+    display: block;
+    margin-right: 10px;
+}
+
+.task__delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background-color: $main-red;
+    color: $main-white;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: auto;
+}
