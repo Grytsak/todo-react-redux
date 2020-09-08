@@ -16,14 +16,6 @@ class ConnectedTasksList extends Component {
                     < Task task={task} />
             </li>
         ));
-        /*
-       return this.props.todos.map(todo => (
-            <li key={todo.id} 
-                className={ todo.complete ? `${classes.tasks__item} ${classes.task___complete}` : classes.tasks__item }>
-                <Task todo={todo} deleteTask={this.props.deleteTask} markDone={this.props.markDone} />
-            </li>
-       ));
-       */
     }
 }
 
