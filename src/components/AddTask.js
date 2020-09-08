@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addNewTask } from '../js/actions/index';
 
-class AddTask extends Component {
+const mapStateToProps = state => {
+    return { tasks: state.tasks };
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addNewTask: taskId => dispatch(addNewTask(taskId))
+    }
+}
+
+class ConnectedAddTask extends Component {
     state = {
-        title: ''
+        id: null,
+        title: '',
+        complete: false
     }
 
     onChange = (e) => {
         this.setState({[e.target.name]: e.target.value});
     }
 
-    addTaskChild = (e) => {
+    addTask = (e) => {
         e.preventDefault();
-        this.props.addTask(this.state.title);
+        this.state.id = this.props.tasks.length + 1;
+        this.props.addNewTask(this.state);
         this.setState({title: ""});
     }
 
@@ -28,11 +42,13 @@ class AddTask extends Component {
                         onChange={this.onChange}
                         />
                         
-                    <button onClick={this.addTaskChild}>+</button>
+                    <button onClick={this.addTask}>+</button>
                 </div>
             </form>
         )
     }
 }
+
+const AddTask = connect(mapStateToProps, mapDispatchToProps)(ConnectedAddTask);
 
 export default AddTask;

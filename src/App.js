@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './scss/common.scss';
 import { Provider } from 'react-redux';
+import store from "./js/store/index";
 
 import AddTask from './components/AddTask';
 import TasksList from './components/TasksList';
-
-import { createStore } from 'redux';
 
 
 
@@ -40,39 +39,22 @@ class App extends Component {
       id: todosLength + 1,
       title: title
     }
-    this.setState({todos: [...this.state.todos, newTask]});
-  }
-
-  deleteTask = (id) => {
-    this.setState({todos: [...this.state.todos.filter((todo) => todo.id !== id)]});
-  }
-
-  markDone = (id) => {
-    const todos = [...this.state.todos];
-
-    todos.map(task => {
-      if (task.id === id) {
-        task.complete = !task.complete;
-      }
-      return task;
-    })
-
-    this.setState({todos: todos});
+    this.setState({ todos: [...this.state.todos, newTask] });
   }
 
   render() {
     return (
-      // <Provider store={store}>
-      <div className="todo">
-        <header className="todo-header">
-          <h1>Todo React Redux</h1>
-          <AddTask todos={this.state.todos} addTask={this.addTask} />
-        </header>
-        <ul className="todo-list">
-          <TasksList todos={this.state.todos} deleteTask={this.deleteTask} markDone={this.markDone} />
-        </ul>
-      </div>
-      // </Provider>
+      <Provider store={store}>
+        <div className="todo">
+          <header className="todo-header">
+            <h1>Todo React Redux</h1>
+            <AddTask todos={this.state.todos} addTask={this.addTask} />
+          </header>
+          <ul className="todo-list">
+            <TasksList />
+          </ul>
+        </div>
+      </Provider>
     );
   }
 }
