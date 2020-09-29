@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './scss/common.scss';
 import { Provider } from 'react-redux';
-import store from "./js/store/index";
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./reducers";
 
 import AddTask from './components/AddTask';
 import TasksList from './components/TasksList';
 
+const store = configureStore({
+  reducer: rootReducer
+});
 
 class App extends Component {
   render() {
