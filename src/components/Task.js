@@ -19,11 +19,11 @@ class ConnectedTask extends Component {
             <div className={classes.task__container}>
                 <input type="checkbox"  
                 className={classes.task__checkbox}
-                onChange={this.props.markTaskDone.bind(null, id)} />
+                onChange={() => this.props.markTaskDone(id)} />
 
                 <p className={classes.task__title}>{title}</p>
 
-            <span className={classes.task__delete} onClick={this.props.deleteTask.bind(this, id)}>x</span> 
+            <span className={classes.task__delete} onClick={() => this.props.deleteTask(id)}>x</span> 
             </div>
         )
     }

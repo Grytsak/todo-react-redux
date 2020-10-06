@@ -17,7 +17,7 @@ class ConnectedAddTask extends Component {
     state = {
         id: null,
         title: '',
-        complete: false
+        completed: false
     }
 
     onChange = (e) => {

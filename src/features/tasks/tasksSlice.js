@@ -6,24 +6,23 @@ const taskSlice = createSlice({
     {
     id: 1,
     title: 'Task 1',
-    complete: false
+    completed: false
   },
   {
     id: 2,
     title: 'Task 2',
-    complete: false
+    completed: false
   },
   {
     id: 3,
     title: 'Task 3',
-    complete: false
+    completed: false
   }
 ],
   reducers: {
     addNewTask(state, action) {
-      console.log('addNewTask:', action.payload);
-      const { id, title } = action.payload
-      state.push({ id, title, completed: false })
+      const { id, title, completed } = action.payload;
+      state.push({ id, title, completed })
     },
     markTaskDone(state, action) {
       const task = state.find(task => task.id === action.payload)
