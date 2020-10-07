@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { markTaskDone, deleteTask } from '../features/tasks/tasksSlice';
+import { markTaskDone, deleteTask } from '../tasks/tasksSlice';
 
-import classes from './../scss/components/Task.module.scss';
+import classes from '../../scss/components/Task.module.scss';
 
 function mapDispatchToProps(dispatch) {
     return {

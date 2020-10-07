@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./reducers";
 
-import AddTask from './components/AddTask';
-import TasksList from './components/TasksList';
+import AddTask from './features/tasks/AddTask';
+import TasksList from './features/tasks/TasksList';
 
 const store = configureStore({
   reducer: rootReducer

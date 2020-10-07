@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Task from './Task';
 import { connect } from 'react-redux';
 
-import classes from './../scss/components/TasksList.module.scss';
+import classes from '../../scss/components/TasksList.module.scss';
 
 const mapStateToProps = state => {
     return { tasks: state.tasks };

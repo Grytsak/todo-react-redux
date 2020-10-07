@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNewTask } from '../features/tasks/tasksSlice';
-// import { addNewTask } from '../actions/index';
+import { addNewTask } from './tasksSlice';
 
 const mapStateToProps = state => {
     return { tasks: state.tasks };
