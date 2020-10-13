@@ -11,7 +11,7 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-class ConnectedTask extends Component {
+class Task extends Component {
 
     render() {
         const { id, title } = this.props.task;
@@ -29,6 +29,4 @@ class ConnectedTask extends Component {
     }
 }
 
-const Task = connect(null, mapDispatchToProps)(ConnectedTask);
-
-export default Task;
+export default connect(null, mapDispatchToProps)(Task);

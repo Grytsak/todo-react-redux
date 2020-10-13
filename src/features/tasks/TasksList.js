@@ -8,7 +8,7 @@ const mapStateToProps = state => {
     return { tasks: state.tasks };
 };
 
-class ConnectedTasksList extends Component {
+class TasksList extends Component {
     render() {
         return this.props.tasks.map(task => (
             <li key={task.id} 
@@ -19,6 +19,4 @@ class ConnectedTasksList extends Component {
     }
 }
 
-const TasksList = connect(mapStateToProps)(ConnectedTasksList);
-
-export default TasksList;
+export default connect(mapStateToProps)(TasksList);

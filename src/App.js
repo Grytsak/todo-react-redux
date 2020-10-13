@@ -6,6 +6,7 @@ import rootReducer from "./reducers";
 
 import AddTask from './features/tasks/AddTask';
 import TasksList from './features/tasks/TasksList';
+import Filters from './features/filters/Filters';
 
 const store = configureStore({
   reducer: rootReducer
@@ -19,6 +20,7 @@ class App extends Component {
           <header className="todo-header">
             <h1>Todo React Redux</h1>
             <AddTask />
+            <Filters />
           </header>
           <ul className="todo-list">
             <TasksList />

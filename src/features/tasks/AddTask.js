@@ -12,7 +12,7 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-class ConnectedAddTask extends Component {
+class AddTask extends Component {
     state = {
         id: null,
         title: '',
@@ -49,6 +49,4 @@ class ConnectedAddTask extends Component {
     }
 }
 
-const AddTask = connect(mapStateToProps, mapDispatchToProps)(ConnectedAddTask);
-
-export default AddTask;
+export default connect(mapStateToProps, mapDispatchToProps)(AddTask);
