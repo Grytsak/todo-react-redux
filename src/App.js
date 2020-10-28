@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./reducers";
 
-import AddTask from './features/tasks/AddTask';
-import TasksList from './features/tasks/TasksList';
-import Filters from './features/filters/Filters';
+import AddTaskContainer from './features/tasks/AddTaskContainer';
+import TasksListContainer from './features/tasks/TaskListContainer';
+import FiltersContainer from './features/filters/FiltersContainer';
 
 const store = configureStore({
   reducer: rootReducer
@@ -19,11 +19,11 @@ class App extends Component {
         <div className="todo">
           <header className="todo-header">
             <h1>Todo React Redux</h1>
-            <AddTask />
-            <Filters />
+            <AddTaskContainer />
+            <FiltersContainer />
           </header>
           <ul className="todo-list">
-            <TasksList />
+            <TasksListContainer />
           </ul>
         </div>
       </Provider>

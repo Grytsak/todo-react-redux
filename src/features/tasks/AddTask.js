@@ -1,18 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { addNewTask } from './tasksSlice';
 
-const mapStateToProps = state => {
-    return { tasks: state.tasks };
-};
-
-function mapDispatchToProps(dispatch) {
-    return {
-        addNewTask: taskId => dispatch(addNewTask(taskId))
-    }
-}
-
-class AddTask extends Component {
+export default class AddTask extends Component {
     state = {
         id: null,
         title: '',
@@ -48,5 +36,3 @@ class AddTask extends Component {
         )
     }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddTask);

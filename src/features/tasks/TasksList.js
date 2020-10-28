@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-import Task from './Task';
-import { connect } from 'react-redux';
+import TaskContainer from './TaskContainer';
 
 import classes from '../../scss/components/TasksList.module.scss';
 
-const mapStateToProps = state => {
-    return { tasks: state.tasks };
-};
-
-class TasksList extends Component {
+export default class TasksList extends Component {
     render() {
         return this.props.tasks.map(task => (
             <li key={task.id} 
-                className={ task.complete ? `${classes.tasks__item} ${classes.task___complete}` : classes.tasks__item }>
-                    < Task task={task} />
+                className={ task.completed ? `${classes.tasks__item} ${classes.task___complete}` : classes.tasks__item }>
+                    < TaskContainer task={task} />
             </li>
         ));
     }
 }
-
-export default connect(mapStateToProps)(TasksList);
