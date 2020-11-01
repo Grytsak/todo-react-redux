@@ -8,7 +8,7 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-      addNewTask: taskId => dispatch(addNewTask(taskId))
+      addNewTask: title => dispatch(addNewTask(title))
   }
 }
 

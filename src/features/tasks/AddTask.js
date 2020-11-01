@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 export default class AddTask extends Component {
     state = {
-        id: null,
+        // id: null,
         title: '',
-        completed: false
+        // completed: false
     }
 
     onChange = (e) => {
@@ -13,9 +13,13 @@ export default class AddTask extends Component {
 
     addTask = (e) => {
         e.preventDefault();
-        this.state.id = this.props.tasks.length + 1;
-        this.props.addNewTask(this.state);
-        this.setState({title: ""});
+        if (this.state.title) {
+            this.props.addNewTask(this.state.title);
+            this.setState({title: ""});
+        } else {
+            alert('Task title must not be empty');
+        }
+        
     }
 
     render() {

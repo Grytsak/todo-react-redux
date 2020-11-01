@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+let nextTaskId = 3;
+
 const taskSlice = createSlice({
   name: 'tasks',
   initialState: [
@@ -20,9 +22,14 @@ const taskSlice = createSlice({
   }
 ],
   reducers: {
-    addNewTask(state, action) {
-      const { id, title, completed } = action.payload;
-      state.push({ id, title, completed })
+    addNewTask: {
+      reducer(state, action) {
+        const { id, title, completed } = action.payload;
+        state.push({ id, title, completed })
+      },
+      prepare(title) {
+        return { payload: { title, id: ++nextTaskId, completed: false  } }
+      }
     },
     markTaskDone(state, action) {
       const task = state.find(task => task.id === action.payload)

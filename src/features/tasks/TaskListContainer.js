@@ -6,8 +6,6 @@ import { createSelector } from '@reduxjs/toolkit'
 const selectTasks = state => state.tasks
 const selectFilter = state => state.filters
 
-console.log('selectTasks:', selectTasks);
-
 const selectVisibleTasks = createSelector(
   [selectTasks, selectFilter],
   (tasks, filter) => {
