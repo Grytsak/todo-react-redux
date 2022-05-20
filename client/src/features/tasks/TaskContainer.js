@@ -4,8 +4,10 @@ import  Task  from './Task';
 
 function mapDispatchToProps(dispatch) {
   return {
-      markTaskDone: taskId => dispatch(markTaskDone(taskId)),
-      deleteTask: taskId => dispatch(deleteTask(taskId))
+      markTaskDone: (id, completed) => {
+        dispatch(markTaskDone({id, completed}))
+      },
+      deleteTask: id => dispatch(deleteTask(id))
   }
 }
 
