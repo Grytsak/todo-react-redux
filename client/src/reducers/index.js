@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import tasksReducer from '../features/tasks/tasksSlice';
-import filtersReducer from '../features/filters/filtersSlice';
+import { configureStore } from '@reduxjs/toolkit'
+import tasksReducer from '../features/tasks/tasksSlice'
 
-export default combineReducers({
-  tasks: tasksReducer,
-  filters: filtersReducer
+export const store = configureStore({
+  reducer: {
+    tasks: tasksReducer,
+  }
 })

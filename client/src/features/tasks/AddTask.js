@@ -1,40 +1,38 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addNewTask } from './tasksSlice'
 
-export default class AddTask extends Component {
-    state = {
-        name: '',
-    }
+function AddTask() {
+    const dispatch = useDispatch()
+    const [name, setName] = useState('')
 
-    onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
-    }
 
-    addTask = (e) => {
+    const addTask = (e) => {
         e.preventDefault();
-        if (this.state.name) {
-            this.props.addNewTask({name: this.state.name})
-            this.setState({name: ""})
+        if (name) {
+            dispatch(addNewTask({name}))
+            setName('')
         } else {
             alert('Task name must not be empty');
         }
         
     }
 
-    render() {
-        return (
-            <form>
-                <div>
-                    <input
-                        type="text"  
-                        name="name"
-                        value={this.state.name}
-                        placeholder="Add new task..."
-                        onChange={this.onChange}
-                        />
-                        
-                    <button onClick={this.addTask}>+</button>
-                </div>
-            </form>
-        )
-    }
+    return (
+        <form>
+            <div>
+                <input
+                    type="text"  
+                    name="name"
+                    value={name}
+                    placeholder="Add new task..."
+                    onChange={(e) => setName(e.target.value)}
+                    />
+                    
+                <button onClick={addTask}>+</button>
+            </div>
+        </form>
+    )
 }
+
+export default AddTask

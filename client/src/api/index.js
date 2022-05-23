@@ -6,13 +6,20 @@ export const getAllTasks = async () => {
     const response = await axios.get(url)
     return response.data
 }
+export const getActiveTasks = async () => {
+    const response = await axios.get(`${url}/active`)
+    return response.data
+}
+export const getCompletedTasks = async () => {
+    const response = await axios.get(`${url}/completed`)
+    return response.data
+}
 export const createTask = async (newTask) => {
     const response = await axios.post(url, newTask)
     return response.data
 }
 export const markTaskDone = async (id, completed) => {
     const response = await axios.patch(`${url}${id}`, {id, completed})
-    console.log('response:', response.data)
     return response.data
 }
 export const deleteTask = async (id) =>  {

@@ -7,6 +7,18 @@ export const getAllTasks = asyncWrapper(async (req, res) => {
     res.status(200).json(tasks)
 })
 
+export const getActiveTasks = asyncWrapper(async (req, res) => {
+    const tasks = await Task.find({})
+    const activeTasks = tasks.filter(task => task.completed === false)
+    res.status(200).json(activeTasks)
+})
+
+export const getCompletedTasks = asyncWrapper(async (req, res) => {
+    const tasks = await Task.find({})
+    const completedTasks = tasks.filter(task => task.completed === true)
+    res.status(200).json(completedTasks)
+})
+
 export const createTask = asyncWrapper(async (req, res) => {
     const task = await Task.create(req.body)
     res.status(201).json(task)
@@ -26,13 +38,6 @@ export const changeTaskStatus = asyncWrapper(async (req, res) => {
 })
 
 export const deleteTask = asyncWrapper(async (req, res, next) => {
-    // const { id: taskID } = req.params
-    // const task = await Task.findOneAndDelete({ _id: taskID })
-    // if (!task) {
-    //   return next(createCustomError(`No task with id : ${taskID}`, 404))
-    // }
-    // res.status(200).json({task})
-
     const task = await Task.findById(req.params.id)
     await task.remove()
 
