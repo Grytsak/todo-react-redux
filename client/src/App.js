@@ -1,24 +1,25 @@
-import React from 'react';
-import './scss/common.scss';
-
-import AddTask from './features/tasks/AddTask';
-import TasksList from './features/tasks/TasksList';
-import TaskFilters from './features/tasks/TaskFilters';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import Dashboard from './pages/Dashboard'
+import Register from './pages/Register'
+import Login from './pages/Login'
+import './scss/common.scss'
 
 
 function App() {
   return (
     <>
-      <div className="todo">
-        <header className="todo-header">
-          <h1>Todo React Redux</h1>
-          <AddTask />
-          <TaskFilters />
-        </header>
-        <ul className="todo-list">
-          <TasksList />
-        </ul>
-      </div>
+      <Router>
+        <div className="todo">
+          <Routes>
+            <Route path='/' element={<Dashboard />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+          </Routes>
+        </div>
+      </Router>
     </>
   )
 }

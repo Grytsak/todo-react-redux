@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import * as api from '../../api/index.js'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import * as taskService from './taskService'
 
 const initialState = {
   tasks: [],
@@ -14,7 +14,8 @@ export const getAllTasks = createAsyncThunk(
   'tasks/getAllTasks',
   async (_, thunkAPI) => {
     try {
-      return await api.getAllTasks()
+      const token = thunkAPI.getState().auth.user.token
+      return await taskService.getAllTasks(token)
     } catch (error) {
       const message =
         (error.response &&
@@ -31,7 +32,8 @@ export const getActiveTasks = createAsyncThunk(
   'tasks/getActiveTasks',
   async (_, thunkAPI) => {
     try {
-      return await api.getActiveTasks()
+      const token = thunkAPI.getState().auth.user.token
+      return await taskService.getActiveTasks(token)
     } catch (error) {
       const message =
         (error.response &&
@@ -48,7 +50,8 @@ export const getCompletedTasks = createAsyncThunk(
   'tasks/getCompletedTasks',
   async (_, thunkAPI) => {
     try {
-      return await api.getCompletedTasks()
+      const token = thunkAPI.getState().auth.user.token
+      return await taskService.getCompletedTasks(token)
     } catch (error) {
       const message =
         (error.response &&
@@ -65,7 +68,8 @@ export const addNewTask = createAsyncThunk(
   'tasks/addNewTask',
   async (name, thunkAPI) => {
     try {
-      return await api.createTask(name)
+      const token = thunkAPI.getState().auth.user.token
+      return await taskService.createTask(name, token)
     } catch(error) {
       const message =
         (error.response &&
@@ -82,7 +86,8 @@ export const markTaskDone = createAsyncThunk(
   'task/markTaskDone',
   async ({_id, completed}, thunkAPI) => {
     try {
-      return await api.markTaskDone(_id, completed)
+      const token = thunkAPI.getState().auth.user.token
+      return await taskService.markTaskDone(_id, completed, token)
     } catch (error) {
       const message =
         (error.response &&
@@ -99,7 +104,8 @@ export const deleteTask = createAsyncThunk(
   'task/deleteTask',
   async (id, thunkAPI) => {
     try {
-      return await api.deleteTask(id)
+      const token = thunkAPI.getState().auth.user.token
+      return await taskService.deleteTask(id, token)
     } catch (error) {
       const message =
         (error.response &&

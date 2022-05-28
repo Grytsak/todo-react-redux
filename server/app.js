@@ -5,6 +5,7 @@ import cors from 'cors'
 dotenv.config()
 
 import taskRoutes from './routes/tasks.js'
+import usersRoutes from './routes/users.js'
 
 
 const app = express()
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
 app.use('/api/tasks', taskRoutes)
+app.use('/api/users', usersRoutes)
 
 const start = async () => {
     try {
